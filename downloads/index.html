@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Downloads — Elwell</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    header h1 { margin: 0 0 0.25rem; }
+    .card { border: 1px solid #e6e6e6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+    .btn { display:inline-block; background:#0366d6; color:#fff; padding:0.5rem 0.75rem; border-radius:6px; text-decoration:none; }
+    pre { background:#f6f8fa; padding:0.75rem; border-radius:6px; overflow:auto; }
+    .muted { color:#666; font-size:0.95rem; }
+    .meta { margin-top:0.5rem; font-size:0.95rem; color:#333; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Downloads</h1>
+    <p class="muted">Install files and release artifacts for the Elwell Stata package (ebdid).</p>
+  </header>
+
+  <section class="card">
+    <h2>Individual files</h2>
+    <p>The package files committed to this repository (commit <code>6adc82f</code>):</p>
+    <ul>
+      <li>ebdid.ado — Stata program file</li>
+      <li>ebdid.sthlp — Stata help file (SMCL)</li>
+    </ul>
+
+    <p>
+      <a class="btn" href="https://raw.githubusercontent.com/michaelelwell25/Elwell/6adc82f292924e599143daa4eab03383a3f88aae/ebdid.ado" download>Download ebdid.ado</a>
+      &nbsp;
+      <a class="btn" href="https://raw.githubusercontent.com/michaelelwell25/Elwell/6adc82f292924e599143daa4eab03383a3f88aae/ebdid.sthlp" download style="background:#6f42c1">Download ebdid.sthlp</a>
+    </p>
+
+    <p class="meta">If you prefer a single archive, consider creating a ZIP release and linking the release asset instead (recommended for versioning).</p>
+  </section>
+
+  <section class="card">
+    <h2>Installation (Stata)</h2>
+    <ol>
+      <li>Download <code>ebdid.ado</code> and <code>ebdid.sthlp</code> from the links above.</li>
+      <li>Find your PERSONAL ado directory in Stata: in Stata type <code>sysdir</code> and note the path labeled <code>PERSONAL</code>.</li>
+      <li>Copy the files into that directory. Example (macOS / Linux):
+        <pre>cp ~/Downloads/ebdid.ado ~/ado/personal/
+cp ~/Downloads/ebdid.sthlp ~/ado/personal/</pre>
+      </li>
+      <li>Restart Stata and confirm the help file is available: <code>help ebdid</code>. Run an example to check everything works.</li>
+    </ol>
+
+    <h4>Example usage</h4>
+    <pre>// in Stata
+sysdir
+// copy files to PERSONAL (example path)
+help ebdid
+ebdid y, group(state) time(year) treated(D)</pre>
+  </section>
+
+  <section class="card">
+    <h2>Checksum (optional but recommended)</h2>
+    <p class="muted">After creating a ZIP or when publishing release assets, publish a SHA256 checksum so users can verify downloads:</p>
+    <pre>sha256sum ebdid.zip
+# or (macOS / OpenSSL)
+openssl dgst -sha256 ebdid.zip</pre>
+  </section>
+
+  <section class="card">
+    <h2>Changelog / Notes</h2>
+    <ul>
+      <li><strong>v1.0.0</strong> — initial public release (ebdid.ado + ebdid.sthlp)</li>
+    </ul>
+  </section>
+
+  <footer class="muted">
+    <p>Questions or issues? Open an issue in the <a href="https://github.com/michaelelwell25/Elwell/issues">GitHub repo</a>.</p>
+  </footer>
+</body>
+</html>
