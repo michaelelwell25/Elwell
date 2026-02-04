@@ -180,5 +180,8 @@ applications. {it:Journal of the American Statistical Association}
 {title:Author}
 
 {pstd}
-[Author information]
+Michael V. Elwell  
+University of North Texas  
+Email: MichaelElwell@my.unt.edu
 {p_end}
+
