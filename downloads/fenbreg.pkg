@@ -1,0 +1,18 @@
+v 3
+d fenbreg: Fixed-effects negative binomial regression
+d
+d Concentrated/profile likelihood NB FE estimator that genuinely absorbs
+d unit-level heterogeneity from the conditional mean. Supports NB2 (default)
+d and NB1 parameterizations, split-panel jackknife bias correction,
+d sandwich/clustered standard errors, and Poisson FE benchmarking.
+d
+d Requires: Stata 16.0+
+d
+d Distribution-Date: 20260209
+d
+F fenbreg.ado
+F fenbreg_p.ado
+F fenbreg.sthlp
+F zifenbreg.ado
+F zifenbreg_p.ado
+F zifenbreg.sthlp
