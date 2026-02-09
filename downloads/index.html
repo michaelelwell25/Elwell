@@ -5,75 +5,146 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Downloads — Elwell</title>
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #333; }
     header h1 { margin: 0 0 0.25rem; }
-    .card { border: 1px solid #e6e6e6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
-    .btn { display:inline-block; background:#0366d6; color:#fff; padding:0.5rem 0.75rem; border-radius:6px; text-decoration:none; }
-    pre { background:#f6f8fa; padding:0.75rem; border-radius:6px; overflow:auto; }
+    .card { border: 1px solid #e6e6e6; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
+    .card h2 { margin-top: 0; color: #1a1a1a; }
+    .btn { display:inline-block; color:#fff; padding:0.5rem 0.75rem; border-radius:6px; text-decoration:none; font-weight: 500; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    .btn-ado { background:#2563eb; }
+    .btn-help { background:#6f42c1; }
+    .btn-predict { background:#0d9488; }
+    .btn-pkg { background:#64748b; }
+    .btn:hover { opacity: 0.85; }
+    pre { background:#f6f8fa; padding:0.75rem; border-radius:6px; overflow:auto; font-size: 0.9rem; }
     .muted { color:#666; font-size:0.95rem; }
     .meta { margin-top:0.5rem; font-size:0.95rem; color:#333; }
+    .pkg-tag { display: inline-block; background: #f0f0f0; color: #333; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .back-link { margin-bottom: 1.5rem; display: block; }
+    .back-link a { color: #2563eb; text-decoration: none; }
+    .back-link a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+  <div class="back-link"><a href="../">&larr; Back to main site</a></div>
+
   <header>
     <h1>Downloads</h1>
-    <p class="muted">Install files and release artifacts for the Elwell Stata package (ebdid).</p>
+    <p class="muted">Stata packages for panel data econometrics.</p>
   </header>
 
+  <!-- fenbreg -->
   <section class="card">
-    <h2>Individual files</h2>
-    <p>The package files committed to this repository (commit <code>6adc82f</code>):</p>
+    <span class="pkg-tag">Stata package</span>
+    <h2>fenbreg — Fixed-Effects Negative Binomial Regression</h2>
+    <p>
+      Concentrated/profile likelihood NB FE estimator that genuinely absorbs
+      unit-level heterogeneity from the conditional mean. Unlike <code>xtnbreg, fe</code>,
+      this is a true fixed-effects estimator.
+    </p>
     <ul>
-      <li>ebdid.ado — Stata program file</li>
-      <li>ebdid.sthlp — Stata help file (SMCL)</li>
+      <li>NB2 (default) and NB1 parameterizations</li>
+      <li>Split-panel jackknife bias correction</li>
+      <li>Sandwich/clustered standard errors</li>
+      <li>Poisson FE benchmarking via <code>compare</code> option</li>
     </ul>
 
-    <p>
-      <a class="btn" href="https://raw.githubusercontent.com/michaelelwell25/Elwell/6adc82f292924e599143daa4eab03383a3f88aae/ebdid.ado" download>Download ebdid.ado</a>
-      &nbsp;
-      <a class="btn" href="https://raw.githubusercontent.com/michaelelwell25/Elwell/6adc82f292924e599143daa4eab03383a3f88aae/ebdid.sthlp" download style="background:#6f42c1">Download ebdid.sthlp</a>
+    <p style="margin-top: 1rem;">
+      <a class="btn btn-ado" href="fenbreg.ado" download>fenbreg.ado</a>
+      <a class="btn btn-predict" href="fenbreg_p.ado" download>fenbreg_p.ado</a>
+      <a class="btn btn-help" href="fenbreg.sthlp" download>fenbreg.sthlp</a>
     </p>
 
-    <p class="meta">If you prefer a single archive, consider creating a ZIP release and linking the release asset instead (recommended for versioning).</p>
+    <p class="meta"><strong>Installation:</strong></p>
+    <pre>* Copy files to your PERSONAL ado directory:
+sysdir
+* Then in Stata:
+help fenbreg</pre>
+
+    <p class="meta"><strong>Quick example:</strong></p>
+    <pre>webuse ships
+xtset ship year
+fenbreg accident op_75_79 co_65_69 co_70_74 co_75_79, exposure(service) irr</pre>
   </section>
 
+  <!-- zifenbreg -->
   <section class="card">
-    <h2>Installation (Stata)</h2>
-    <ol>
-      <li>Download <code>ebdid.ado</code> and <code>ebdid.sthlp</code> from the links above.</li>
-      <li>Find your PERSONAL ado directory in Stata: in Stata type <code>sysdir</code> and note the path labeled <code>PERSONAL</code>.</li>
-      <li>Copy the files into that directory. Example (macOS / Linux):
-        <pre>cp ~/Downloads/ebdid.ado ~/ado/personal/
-cp ~/Downloads/ebdid.sthlp ~/ado/personal/</pre>
-      </li>
-      <li>Restart Stata and confirm the help file is available: <code>help ebdid</code>. Run an example to check everything works.</li>
-    </ol>
+    <span class="pkg-tag">Stata package</span>
+    <h2>zifenbreg — Zero-Inflated FE Negative Binomial Regression</h2>
+    <p>
+      Extends <code>fenbreg</code> with a zero-inflation component for count data with
+      excess zeros. The count equation uses concentrated likelihood for unit FE;
+      the inflate equation is a standard logit (no unit FE, avoiding incidental parameters bias).
+    </p>
+    <ul>
+      <li>Zero-inflation via logit with user-specified covariates</li>
+      <li>NB2 (default) and NB1 parameterizations</li>
+      <li>Sandwich/clustered standard errors</li>
+      <li>Vuong test for ZINB vs standard NB</li>
+      <li>Predictions: <code>yhat</code>, <code>mu</code>, <code>pr</code>, <code>xb</code>, <code>zg</code>, <code>fe</code></li>
+    </ul>
 
-    <h4>Example usage</h4>
-    <pre>// in Stata
-sysdir
-// copy files to PERSONAL (example path)
-help ebdid
+    <p style="margin-top: 1rem;">
+      <a class="btn btn-ado" href="zifenbreg.ado" download>zifenbreg.ado</a>
+      <a class="btn btn-predict" href="zifenbreg_p.ado" download>zifenbreg_p.ado</a>
+      <a class="btn btn-help" href="zifenbreg.sthlp" download>zifenbreg.sthlp</a>
+    </p>
+
+    <p class="meta"><strong>Quick example:</strong></p>
+    <pre>xtset state_id session_year
+zifenbreg bills_introduced x1 x2 x3, inflate(z1 z2) vce(robust) irr vuong</pre>
+  </section>
+
+  <!-- Package file -->
+  <section class="card">
+    <h2>Package file</h2>
+    <p>
+      Both <code>fenbreg</code> and <code>zifenbreg</code> are distributed as a single package.
+      Download the package descriptor if you want to install via <code>net install</code>.
+    </p>
+    <p>
+      <a class="btn btn-pkg" href="fenbreg.pkg" download>fenbreg.pkg</a>
+    </p>
+  </section>
+
+  <!-- ebdid -->
+  <section class="card">
+    <span class="pkg-tag">Stata package</span>
+    <h2>ebdid — Empirical Bayes Difference-in-Differences</h2>
+    <p>
+      Empirical Bayes shrinkage estimator for difference-in-differences designs.
+    </p>
+
+    <p style="margin-top: 1rem;">
+      <a class="btn btn-ado" href="ebdid.ado" download>ebdid.ado</a>
+      <a class="btn btn-help" href="ebdid.sthlp" download>ebdid.sthlp</a>
+    </p>
+
+    <p class="meta"><strong>Quick example:</strong></p>
+    <pre>help ebdid
 ebdid y, group(state) time(year) treated(D)</pre>
   </section>
 
   <section class="card">
-    <h2>Checksum (optional but recommended)</h2>
-    <p class="muted">After creating a ZIP or when publishing release assets, publish a SHA256 checksum so users can verify downloads:</p>
-    <pre>sha256sum ebdid.zip
-# or (macOS / OpenSSL)
-openssl dgst -sha256 ebdid.zip</pre>
+    <h2>Installation</h2>
+    <ol>
+      <li>Download the <code>.ado</code>, <code>_p.ado</code>, and <code>.sthlp</code> files for the package you want.</li>
+      <li>Find your PERSONAL ado directory: in Stata, type <code>sysdir</code> and note the path labeled <code>PERSONAL</code>.</li>
+      <li>Copy the downloaded files into that directory.</li>
+      <li>Restart Stata and confirm: <code>help fenbreg</code> or <code>help zifenbreg</code>.</li>
+    </ol>
   </section>
 
   <section class="card">
-    <h2>Changelog / Notes</h2>
+    <h2>Changelog</h2>
     <ul>
-      <li><strong>v1.0.0</strong> — initial public release (ebdid.ado + ebdid.sthlp)</li>
+      <li><strong>fenbreg v1.0.0</strong> — initial release (NB2/NB1, jackknife, sandwich VCE)</li>
+      <li><strong>zifenbreg v1.0.0</strong> — zero-inflated extension of fenbreg</li>
+      <li><strong>ebdid v1.0.0</strong> — initial release</li>
     </ul>
   </section>
 
   <footer class="muted">
-    <p>Questions or issues? Open an issue in the <a href="https://github.com/michaelelwell25/Elwell/issues">GitHub repo</a>.</p>
+    <p>Questions or issues? Email <a href="mailto:MichaelElwell@my.unt.edu">MichaelElwell@my.unt.edu</a> or open an issue on <a href="https://github.com/michaelelwell25/Elwell/issues">GitHub</a>.</p>
   </footer>
 </body>
 </html>
