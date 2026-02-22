@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Michael Elwell - PhD Candidate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: #333;
         }
@@ -131,21 +134,29 @@
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
             color: #1a1a1a;
+            letter-spacing: -0.02em;
         }
 
         h2 {
-            font-size: 2rem;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             color: #1a1a1a;
             border-bottom: 2px solid #2563eb;
             padding-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
         h3 {
-            font-size: 1.3rem;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 600;
             margin-top: 2rem;
             margin-bottom: 0.5rem;
             color: #2563eb;
@@ -300,6 +311,12 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            #home > div:first-child {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
             h1 {
                 font-size: 2rem;
             }
@@ -335,23 +352,27 @@
     </div>
 
     <section id="home">
-        <img src="profile-photo.jpg" alt="Michael V. Elwell" class="profile-photo" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin: 0 auto 2rem; display: block;">
-        <h1>Michael V. Elwell</h1>
-        <p class="subtitle">PhD Candidate in Political Science</p>
-        <p class="subtitle">University of North Texas</p>
-        
-        <p style="max-width: 700px; margin: 2rem auto; text-align: left;">
-            I am a PhD candidate in Political Science at the University of North Texas, specializing in Queer Politics, Racial and Ethnic Politics, and Minority Group Insecurity. My research focuses on understanding LGBTQ+ political behavior, linked fate, and the dynamics of minority acceptance in political systems. I expect to complete my doctorate in 2027.
-        </p>
+        <div style="display: flex; align-items: flex-start; gap: 2.5rem; margin-bottom: 2rem;">
+            <img src="profile-photo.jpg" alt="Michael V. Elwell" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; flex-shrink: 0;">
+            <div>
+                <h1>Michael V. Elwell</h1>
+                <p class="subtitle">PhD Candidate in Political Science</p>
+                <p class="subtitle">University of North Texas</p>
+                <div class="contact-links" style="margin-top: 1.5rem;">
+                    <a href="mailto:MichaelElwell@my.unt.edu">Email</a>
+                    <a href="#cv">CV</a>
+                    <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+                </div>
+            </div>
+        </div>
 
-        <p style="max-width: 700px; margin: 2rem auto; text-align: left;">
-            My research interests include queer linked fate, anti-LGBTQ+ hate crimes, European party platforms and minority acceptance, and intersectional solidarity within the LGBTQ+ community. Prior to my doctoral studies, I earned my B.S. in Political Science from Texas A&M University-Commerce, where I was a McNair Scholar.
-        </p>
-
-        <div class="contact-links">
-            <a href="mailto:MichaelElwell@my.unt.edu">Email</a>
-            <a href="#cv">CV</a>
-            <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+        <div style="font-size: 0.98rem; color: #444; line-height: 1.8;">
+            <p style="margin-bottom: 1rem;">
+                I study LGBTQ+ political identity and coalition politics. My dissertation asks what holds the LGBTQ+ coalition together&mdash;and why it hasn't fractured despite well-documented internal tensions. I first establish that dual identification with both subgroup (e.g., bisexual, transgender) and coalition is the norm, and that experiencing discrimination from within the community actually strengthens coalition solidarity rather than undermining it. I then investigate the mechanisms: how adult socialization through community involvement, networks, and coming out builds group consciousness in the absence of parental transmission, and how the type of discrimination matters&mdash;external threats unify while intimate rejection atomizes.
+            </p>
+            <p>
+                My work engages with linked fate theory, minority group politics, and coalition behavior. I am prepared to teach courses in Political Movements and Coalitions, American and Comparative Political Behavior, Causal Inference, Minority Political Behavior, and undergraduate and graduate research methods.
+            </p>
         </div>
     </section>
 
@@ -602,7 +623,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Michael V. Elwell. Last updated December 2025.</p>
+        <p>&copy; 2026 Michael V. Elwell.</p>
     </footer>
 
     <script>
